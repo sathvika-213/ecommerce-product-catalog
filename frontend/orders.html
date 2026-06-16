@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="nav-container">
+
+        <a href="index.html">
+            <button class="nav-btn">
+                🏠 Back To Dashboard
+            </button>
+        </a>
+
+        <button class="clear-btn" onclick="clearOrders()">
+            🗑 Clear Orders
+        </button>
+
+    </div>
+
+    <h1>Order History</h1>
+
+    <div id="orders-container"></div>
+
+    <script>
+
+        const orders =
+        JSON.parse(
+            localStorage.getItem("orders")
+        ) || [];
+
+        const container =
+        document.getElementById(
+            "orders-container"
+        );
+
+        if (orders.length === 0) {
+
+            container.innerHTML =
+            "<h2>No Orders Found</h2>";
+
+        } else {
+
+            orders.forEach(order => {
+
+                const div =
+                document.createElement("div");
+
+                div.className =
+                "product-card";
+
+                div.innerHTML = `
+                    <h3>${order.name}</h3>
+                    <p>${order.description}</p>
+                    <p class="price">
+                        ₹${order.price}
+                    </p>
+                `;
+
+                container.appendChild(div);
+
+            });
+
+        }
+
+        function clearOrders() {
+
+            if (
+                confirm(
+                    "Are you sure you want to clear all orders?"
+                )
+            ) {
+
+                localStorage.removeItem(
+                    "orders"
+                );
+
+                location.reload();
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

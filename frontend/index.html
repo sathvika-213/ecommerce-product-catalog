@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>E-Commerce Product Catalog</h1>
+
+    <div class="top-bar">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Product..."
+        >
+
+        <button onclick="searchProducts()">Search</button>
+
+        <button onclick="loadProducts()">Show All</button>
+
+        <a href="cart.html">
+            <button>View Cart</button>
+        </a>
+    </div>
+
+    <h3 id="cartCount">Cart: 0 Items</h3>
+
+    <div id="product-container"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
